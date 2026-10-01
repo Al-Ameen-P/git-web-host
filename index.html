@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <h1>📚 Digital Library</h1>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by title or author..." />
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    <h2>Available Books</h2>
+    <div class="book-grid" id="bookGrid">
+      <!-- Book items will be generated dynamically via JS -->
+    </div>
+  </main>
+
+  <!-- Modal for Borrowing Books -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3 id="modalTitle">Book Title</h3>
+      <p id="modalAuthor">Author Name</p>
+      <p class="status-msg">Book successfully borrowed! Check your account dashboard.</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
