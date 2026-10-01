@@ -1,13 +1,48 @@
-// Sample catalog data
-const books = [
-  { id: 1, title: "To Kill a Mockingbird", author: "Harper Lee", category: "Classic Fiction" },
-  { id: 2, title: "1984", author: "George Orwell", category: "Dystopian" },
-  { id: 3, title: "The Great Gatsby", author: "F. Scott Fitzgerald", category: "Classic Fiction" },
-  { id: 4, title: "Clean Code", author: "Robert C. Martin", category: "Programming" },
-  { id: 5, title: "Sapiens", author: "Yuval Noah Harari", category: "History" },
-  { id: 6, title: "The Pragmatic Programmer", author: "Andrew Hunt", category: "Programming" }
-];
+// Function to programmatically generate 100 sample books
+function generateBooks(count) {
+  const titlesPrefix = [
+    "The Art of", "Principles of", "Advanced", "Introduction to", "Mastering",
+    "Secrets of", "The Guide to", "Understanding", "Exploring", "The History of"
+  ];
 
+  const topics = [
+    "Machine Learning", "Quantum Physics", "Modern Architecture", "Ancient Empires",
+    "Cybersecurity", "Data Structures", "Astronomy", "Philosophy", "Psychology",
+    "World Economics", "Digital Marketing", "Biochemistry", "Artificial Intelligence"
+  ];
+
+  const firstNames = ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "David", "Elizabeth"];
+  const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Taylor", "Anderson"];
+
+  const categories = [
+    "Programming", "Science", "History", "Fiction", "Philosophy",
+    "Technology", "Psychology", "Business"
+  ];
+
+  const bookList = [];
+
+  for (let i = 1; i <= count; i++) {
+    const prefix = titlesPrefix[Math.floor(Math.random() * titlesPrefix.length)];
+    const topic = topics[Math.floor(Math.random() * topics.length)];
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const category = categories[Math.floor(Math.random() * categories.length)];
+
+    bookList.push({
+      id: i,
+      title: `${prefix} ${topic}`,
+      author: `${firstName} ${lastName}`,
+      category: category
+    });
+  }
+
+  return bookList;
+}
+
+// Generate array containing exactly 100 books
+const books = generateBooks(100);
+
+// DOM Elements
 const bookGrid = document.getElementById('bookGrid');
 const searchInput = document.getElementById('searchInput');
 const modalOverlay = document.getElementById('modalOverlay');
@@ -33,18 +68,19 @@ function displayBooks(bookList) {
         <p>By ${book.author}</p>
         <span class="tag">${book.category}</span>
       </div>
-      <button class="borrow-btn" onclick="openBorrowModal('${book.title}', '${book.author}')">Borrow</button>
+      <button class="borrow-btn" onclick="openBorrowModal('${book.title.replace(/'/g, "\\'")}', '${book.author.replace(/'/g, "\\'")}')">Borrow</button>
     `;
     bookGrid.appendChild(card);
   });
 }
 
-// Search functionality
+// Search functionality across all 100 books
 searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
+  const searchTerm = e.target.value.toLowerCase().trim();
   const filteredBooks = books.filter(book => 
     book.title.toLowerCase().includes(searchTerm) || 
-    book.author.toLowerCase().includes(searchTerm)
+    book.author.toLowerCase().includes(searchTerm) ||
+    book.category.toLowerCase().includes(searchTerm)
   );
   displayBooks(filteredBooks);
 });
