@@ -4,86 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestige Motors | Pre-Owned Luxury Cars</title>
-    <style>
-        /* CSS Styles */
-        :root {
-            --primary-gold: #d4af37;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
-            --text-light: #f5f5f5;
-            --text-muted: #aaaaaa;
-        }
+    <!-- Links to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
+    <nav>
+        <div class="logo">Prestige Motors</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#inventory">Inventory</a></li>
+            <li><a href="#">Finance</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+    <header class="hero">
+        <h1>Drive Your Dream</h1>
+        <p>Discover an exclusive collection of meticulously inspected, pre-owned luxury vehicles tailored for excellence.</p>
+    </header>
 
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background-color: rgba(18, 18, 18, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #333;
-        }
+    <section id="inventory" class="inventory-section">
+        <h2 class="section-title">Featured <span>Collection</span></h2>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz E-Class">
+                <div class="card-content">
+                    <h3 class="card-title">2021 Mercedes-Benz E-Class</h3>
+                    <div class="card-specs">
+                        <span>28,500 km</span>
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 45,00,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1555353540-64fd3b382025?auto=format&fit=crop&w=800&q=80" alt="BMW 5 Series">
+                <div class="card-content">
+                    <h3 class="card-title">2022 BMW 5 Series 530i Sport</h3>
+                    <div class="card-specs">
+                        <span>43,500 km</span>
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 38,50,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?auto=format&fit=crop&w=800&q=80" alt="Range Rover Sport">
+                <div class="card-content">
+                    <h3 class="card-title">2018 Range Rover Sport</h3>
+                    <div class="card-specs">
+                        <span>73,000 km</span>
+                        <span>Diesel</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 28,50,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
 
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1503376713292-0b73c473138b?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 Carrera">
+                <div class="card-content">
+                    <h3 class="card-title">2019 Porsche 911 Carrera</h3>
+                    <div class="card-specs">
+                        <span>12,000 km</span>
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 1,45,00,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
 
-        nav a:hover {
-            color: var(--primary-gold);
-        }
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1619551734325-81aaf323686c?auto=format&fit=crop&w=800&q=80" alt="Audi Q5">
+                <div class="card-content">
+                    <h3 class="card-title">2023 Audi Q5 Technology</h3>
+                    <div class="card-specs">
+                        <span>30,000 km</span>
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 36,90,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
 
-        /* Hero Section */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1920&q=80') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=800&q=80" alt="Volvo XC60">
+                <div class="card-content">
+                    <h3 class="card-title">2022 Volvo XC60 B5 Ultimate</h3>
+                    <div class="card-specs">
+                        <span>58,500 km</span>
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                    </div>
+                    <p class="card-price">₹ 39,90,000</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
+    <footer>
+        <p>&copy; 2026 Prestige Motors. All rights reserved. | Premium Pre-Owned Retail</p>
+    </footer>
 
-        .hero p {
+    <!-- Links to the JS file -->
+    <script src="script.js"></script>
+</body>
+</html>
