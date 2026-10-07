@@ -1,233 +1,893 @@
-// Database of Vehicles
-const cars = [
+/* =========================================
+   SAMPLE CAR DATA
+========================================= */
+
+const defaultCars = [
     {
         id: 1,
-        brand: 'Lamborghini',
-        model: 'Huracán LP 610-4',
-        year: 2018,
-        price: '₹ 3,15,00,000',
-        km: '15,000 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '5.2L V10',
-        acceleration: '3.2s',
-        image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80'
+        brand: "Toyota",
+        model: "Fortuner",
+        year: 2022,
+        mileage: 32000,
+        fuel: "Diesel",
+        transmission: "Automatic",
+        ownership: "1st Owner",
+        color: "White",
+        originalPrice: 4200000,
+        price: 3650000,
+        negotiable: "Yes",
+        city: "Kochi",
+        state: "Kerala",
+        description: "Excellent condition. Full service history.",
+        image: ""
     },
+
     {
         id: 2,
-        brand: 'Ferrari',
-        model: '488 GTB',
-        year: 2019,
-        price: '₹ 3,65,00,000',
-        km: '9,500 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '3.9L Twin-Turbo V8',
-        acceleration: '3.0s',
-        image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80'
+        brand: "Honda",
+        model: "City",
+        year: 2021,
+        mileage: 28000,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        ownership: "1st Owner",
+        color: "Red",
+        originalPrice: 1650000,
+        price: 1320000,
+        negotiable: "Yes",
+        city: "Trivandrum",
+        state: "Kerala",
+        description: "Well maintained family car.",
+        image: ""
     },
+
     {
         id: 3,
-        brand: 'Aston Martin',
-        model: 'DB11 V12',
-        year: 2017,
-        price: '₹ 2,59,00,000',
-        km: '4,700 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '5.2L Twin-Turbo V12',
-        acceleration: '3.9s',
-        image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 4,
-        brand: 'Ford',
-        model: 'Mustang GT',
-        year: 2018,
-        price: '₹ 64,75,000',
-        km: '22,000 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '5.0L V8',
-        acceleration: '4.5s',
-        image: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42a5?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 5,
-        brand: 'Jaguar',
-        model: 'F-Type R',
-        year: 2021,
-        price: '₹ 98,00,000',
-        km: '11,200 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '5.0L Supercharged V8',
-        acceleration: '3.5s',
-        image: 'https://images.unsplash.com/photo-1549111816-d3b76cf6b8f3?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 6,
-        brand: 'BMW',
-        model: '5 Series 530i M Sport',
-        year: 2022,
-        price: '₹ 67,00,000',
-        km: '18,500 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '2.0L Turbo I4',
-        acceleration: '6.1s',
-        image: 'https://images.unsplash.com/photo-1555353540-64fd3b382025?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 7,
-        brand: 'Toyota',
-        model: 'Land Cruiser LC300',
+        brand: "Hyundai",
+        model: "Creta",
         year: 2023,
-        price: '₹ 2,10,00,000',
-        km: '14,000 km',
-        type: 'Diesel',
-        transmission: 'Automatic',
-        engine: '3.3L Twin-Turbo V6',
-        acceleration: '6.7s',
-        image: 'https://images.unsplash.com/photo-1593055428613-33e1457193f9?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 8,
-        brand: 'Lamborghini',
-        model: 'Urus Twin-Turbo',
-        year: 2019,
-        price: '₹ 3,50,00,000',
-        km: '28,000 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '4.0L Twin-Turbo V8',
-        acceleration: '3.6s',
-        image: 'https://images.unsplash.com/photo-1662993012975-ebce01e389e8?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 9,
-        brand: 'Ferrari',
-        model: 'Portofino',
-        year: 2020,
-        price: '₹ 3,25,00,000',
-        km: '13,000 km',
-        type: 'Petrol',
-        transmission: 'Automatic',
-        engine: '3.9L Twin-Turbo V8',
-        acceleration: '3.5s',
-        image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=800&q=80'
+        mileage: 18000,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        ownership: "1st Owner",
+        color: "Black",
+        originalPrice: 1950000,
+        price: 1740000,
+        negotiable: "No",
+        city: "Kozhikode",
+        state: "Kerala",
+        description: "Low mileage and excellent condition.",
+        image: ""
     }
 ];
 
-// DOM Elements
-const carGrid = document.getElementById('carGrid');
-const searchInput = document.getElementById('searchInput');
-const filterBtns = document.querySelectorAll('.filter-btn');
 
-// Modal Elements
-const modal = document.getElementById('carModal');
-const closeBtn = document.querySelector('.close-btn');
+/* =========================================
+   LOAD CAR DATA
+========================================= */
 
-// Render Cars Function
-function displayCars(carArray) {
-    carGrid.innerHTML = '';
-    
-    if (carArray.length === 0) {
-        carGrid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No vehicles found matching your criteria.</p>';
+let cars = JSON.parse(
+    localStorage.getItem("autoMarketCars")
+);
+
+if (!cars || !Array.isArray(cars) || cars.length === 0) {
+    cars = defaultCars;
+    saveCars();
+}
+
+
+/* =========================================
+   SAVE DATA
+========================================= */
+
+function saveCars() {
+    localStorage.setItem(
+        "autoMarketCars",
+        JSON.stringify(cars)
+    );
+}
+
+
+/* =========================================
+   FORMAT PRICE
+========================================= */
+
+function formatPrice(price) {
+
+    return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+    }).format(price || 0);
+
+}
+
+
+/* =========================================
+   DISPLAY CARS
+========================================= */
+
+function displayCars(list = cars) {
+
+    const container =
+        document.getElementById("carsContainer");
+
+    const noCars =
+        document.getElementById("noCars");
+
+    const count =
+        document.getElementById("carCount");
+
+    container.innerHTML = "";
+
+    count.textContent =
+        `${list.length} car${list.length !== 1 ? "s" : ""} available`;
+
+
+    if (list.length === 0) {
+
+        noCars.classList.remove("hidden");
+
+        return;
+
+    }
+
+    noCars.classList.add("hidden");
+
+
+    list.forEach(car => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "car-card";
+
+
+        const imageHTML = car.image
+            ? `<img src="${car.image}" alt="${escapeHTML(car.brand)} ${escapeHTML(car.model)}">`
+            : `<i class="fa-solid fa-car-side"></i>`;
+
+
+        card.innerHTML = `
+
+            <div class="car-image">
+                ${imageHTML}
+            </div>
+
+            <div class="car-content">
+
+                <div class="car-title">
+
+                    <h3>
+                        ${escapeHTML(car.brand)}
+                        ${escapeHTML(car.model)}
+                    </h3>
+
+                    <button
+                        class="favorite"
+                        onclick="toggleFavorite(this)"
+                    >
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="car-price">
+                    ${formatPrice(car.price)}
+                </div>
+
+
+                <div class="car-details">
+
+                    <div class="car-detail">
+                        <i class="fa-solid fa-calendar"></i>
+                        ${car.year}
+                    </div>
+
+                    <div class="car-detail">
+                        <i class="fa-solid fa-gauge"></i>
+                        ${Number(car.mileage).toLocaleString("en-IN")} km
+                    </div>
+
+                    <div class="car-detail">
+                        <i class="fa-solid fa-gas-pump"></i>
+                        ${escapeHTML(car.fuel)}
+                    </div>
+
+                    <div class="car-detail">
+                        <i class="fa-solid fa-gears"></i>
+                        ${escapeHTML(car.transmission)}
+                    </div>
+
+                </div>
+
+
+                <div class="car-location">
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    ${escapeHTML(car.city)}
+                    ${car.state ? ", " + escapeHTML(car.state) : ""}
+                </div>
+
+
+                <div class="car-footer">
+
+                    <button
+                        class="view-btn"
+                        onclick="viewCar(${car.id})"
+                    >
+                        View Details
+                    </button>
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteCar(${car.id})"
+                        title="Delete listing"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================
+   SEARCH / FILTER
+========================================= */
+
+function filterCars() {
+
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const fuel =
+        document
+            .getElementById("fuelFilter")
+            .value;
+
+
+    const transmission =
+        document
+            .getElementById("transmissionFilter")
+            .value;
+
+
+    const filtered =
+        cars.filter(car => {
+
+            const text =
+                `${car.brand} ${car.model}`
+                .toLowerCase();
+
+
+            const matchesSearch =
+                !search ||
+                text.includes(search);
+
+
+            const matchesFuel =
+                !fuel ||
+                car.fuel === fuel;
+
+
+            const matchesTransmission =
+                !transmission ||
+                car.transmission === transmission;
+
+
+            return (
+                matchesSearch &&
+                matchesFuel &&
+                matchesTransmission
+            );
+
+        });
+
+
+    displayCars(filtered);
+}
+
+
+/* =========================================
+   DELETE CAR
+========================================= */
+
+function deleteCar(id) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this listing?"
+        );
+
+
+    if (!confirmed) {
         return;
     }
 
-    carArray.forEach(car => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <img src="${car.image}" alt="${car.brand} ${car.model}">
-            <div class="card-content">
-                <p class="card-brand">${car.brand}</p>
-                <h3 class="card-title">${car.year} ${car.model}</h3>
-                <div class="card-specs">
-                    <span>${car.km}</span>
-                    <span>${car.type}</span>
-                    <span>${car.transmission}</span>
-                </div>
-                <p class="card-price">${car.price}</p>
-                <button class="btn view-details-btn" data-id="${car.id}">View Details</button>
-            </div>
-        `;
-        carGrid.appendChild(card);
-    });
 
-    // Re-attach event listeners to new buttons
-    document.querySelectorAll('.view-details-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const carId = parseInt(e.target.getAttribute('data-id'));
-            openModal(carId);
-        });
-    });
+    cars =
+        cars.filter(car => car.id !== id);
+
+
+    saveCars();
+
+    displayCars();
 }
 
-// Initial Load
-displayCars(cars);
 
-// Search Functionality
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const filteredCars = cars.filter(car => 
-        car.model.toLowerCase().includes(searchTerm) || 
-        car.brand.toLowerCase().includes(searchTerm)
-    );
-    
-    // Reset category buttons when searching
-    filterBtns.forEach(btn => btn.classList.remove('active'));
-    document.querySelector('[data-brand="All"]').classList.add('active');
-    
-    displayCars(filteredCars);
-});
+/* =========================================
+   VIEW CAR
+========================================= */
 
-// Category Filtering
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        // Handle active state styling
-        filterBtns.forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        
-        // Clear search input when clicking a filter
-        searchInput.value = '';
+function viewCar(id) {
 
-        const selectedBrand = e.target.getAttribute('data-brand');
-        
-        if (selectedBrand === 'All') {
-            displayCars(cars);
-        } else {
-            const filteredCars = cars.filter(car => car.brand === selectedBrand);
-            displayCars(filteredCars);
-        }
-    });
-});
+    const car =
+        cars.find(car => car.id === id);
 
-// Modal Functionality
-function openModal(id) {
-    const car = cars.find(c => c.id === id);
-    
-    document.getElementById('modalImg').src = car.image;
-    document.getElementById('modalTitle').textContent = `${car.year} ${car.brand} ${car.model}`;
-    document.getElementById('modalPrice').textContent = car.price;
-    document.getElementById('modalEngine').textContent = car.engine;
-    document.getElementById('modalAcc').textContent = car.acceleration;
-    document.getElementById('modalKm').textContent = car.km;
-    document.getElementById('modalFuel').textContent = car.type;
-    document.getElementById('modalTrans').textContent = car.transmission;
-    document.getElementById('modalYear').textContent = car.year;
 
-    modal.style.display = 'flex';
-}
-
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    if (!car) {
+        return;
     }
+
+
+    const details = `
+
+${car.brand} ${car.model}
+
+Price: ${formatPrice(car.price)}
+
+Year: ${car.year}
+
+Mileage: ${Number(car.mileage).toLocaleString("en-IN")} km
+
+Fuel: ${car.fuel}
+
+Transmission: ${car.transmission}
+
+Ownership: ${car.ownership}
+
+Color: ${car.color || "Not specified"}
+
+Location: ${car.city}, ${car.state || ""}
+
+Negotiable: ${car.negotiable}
+
+Description:
+${car.description || "No description provided."}
+
+    `;
+
+
+    alert(details);
+
+}
+
+
+/* =========================================
+   FAVORITE
+========================================= */
+
+function toggleFavorite(button) {
+
+    button.classList.toggle("active");
+
+    const icon =
+        button.querySelector("i");
+
+
+    if (button.classList.contains("active")) {
+
+        icon.classList.remove(
+            "fa-regular"
+        );
+
+        icon.classList.add(
+            "fa-solid"
+        );
+
+    } else {
+
+        icon.classList.remove(
+            "fa-solid"
+        );
+
+        icon.classList.add(
+            "fa-regular"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+let uploadedImage = "";
+
+
+function previewImage(event) {
+
+    const file =
+        event.target.files[0];
+
+
+    if (!file) {
+        return;
+    }
+
+
+    if (!file.type.startsWith("image/")) {
+
+        alert("Please select an image file.");
+
+        return;
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(e) {
+
+        uploadedImage =
+            e.target.result;
+
+
+        const preview =
+            document.getElementById(
+                "imagePreview"
+            );
+
+
+        preview.innerHTML = `
+            <img
+                src="${uploadedImage}"
+                alt="Car preview"
+            >
+        `;
+
+
+        updateLivePreviewImage();
+
+    };
+
+
+    reader.readAsDataURL(file);
+}
+
+
+/* =========================================
+   UPDATE PREVIEW IMAGE
+========================================= */
+
+function updateLivePreviewImage() {
+
+    const previewImage =
+        document.querySelector(
+            ".preview-image"
+        );
+
+
+    if (uploadedImage) {
+
+        previewImage.innerHTML = `
+            <img
+                src="${uploadedImage}"
+                alt="Car preview"
+            >
+        `;
+
+    } else {
+
+        previewImage.innerHTML = `
+            <i class="fa-solid fa-car"></i>
+        `;
+
+    }
+
+}
+
+
+/* =========================================
+   CALCULATE SAVINGS
+========================================= */
+
+function calculateSavings() {
+
+    const original =
+        Number(
+            document.getElementById(
+                "originalPrice"
+            ).value
+        );
+
+
+    const selling =
+        Number(
+            document.getElementById(
+                "price"
+            ).value
+        );
+
+
+    const box =
+        document.getElementById(
+            "savingsBox"
+        );
+
+
+    const text =
+        document.getElementById(
+            "savingsText"
+        );
+
+
+    if (
+        original > 0 &&
+        selling > 0 &&
+        original > selling
+    ) {
+
+        const savings =
+            original - selling;
+
+
+        const percentage =
+            Math.round(
+                (savings / original) * 100
+            );
+
+
+        text.textContent =
+            `Save ${formatPrice(savings)} (${percentage}% below original price)`;
+
+
+        box.classList.remove("hidden");
+
+    } else {
+
+        box.classList.add("hidden");
+
+    }
+
+}
+
+
+/* =========================================
+   LIVE FORM PREVIEW
+========================================= */
+
+function updateLivePreview() {
+
+    const brand =
+        document.getElementById("brand").value
+        || "Your";
+
+
+    const model =
+        document.getElementById("model").value
+        || "Car";
+
+
+    const year =
+        document.getElementById("year").value
+        || "Year";
+
+
+    const mileage =
+        document.getElementById("mileage").value;
+
+
+    const fuel =
+        document.getElementById("fuel").value
+        || "Fuel";
+
+
+    const transmission =
+        document.getElementById("transmission").value
+        || "Transmission";
+
+
+    const price =
+        document.getElementById("price").value;
+
+
+    document.getElementById(
+        "previewName"
+    ).textContent =
+        `${brand} ${model}`;
+
+
+    document.getElementById(
+        "previewYear"
+    ).textContent =
+        year;
+
+
+    document.getElementById(
+        "previewMileage"
+    ).textContent =
+        mileage
+            ? `${Number(mileage).toLocaleString("en-IN")} km`
+            : "KM";
+
+
+    document.getElementById(
+        "previewFuel"
+    ).textContent =
+        fuel;
+
+
+    document.getElementById(
+        "previewTransmission"
+    ).textContent =
+        transmission;
+
+
+    document.getElementById(
+        "previewPrice"
+    ).textContent =
+        price
+            ? formatPrice(price)
+            : "₹0";
+
+}
+
+
+/* =========================================
+   FORM SUBMISSION
+========================================= */
+
+document
+    .getElementById("carForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const newCar = {
+
+                id:
+                    Date.now(),
+
+                brand:
+                    document.getElementById(
+                        "brand"
+                    ).value.trim(),
+
+                model:
+                    document.getElementById(
+                        "model"
+                    ).value.trim(),
+
+                year:
+                    Number(
+                        document.getElementById(
+                            "year"
+                        ).value
+                    ),
+
+                mileage:
+                    Number(
+                        document.getElementById(
+                            "mileage"
+                        ).value
+                    ),
+
+                fuel:
+                    document.getElementById(
+                        "fuel"
+                    ).value,
+
+                transmission:
+                    document.getElementById(
+                        "transmission"
+                    ).value,
+
+                ownership:
+                    document.getElementById(
+                        "ownership"
+                    ).value,
+
+                color:
+                    document.getElementById(
+                        "color"
+                    ).value.trim(),
+
+                originalPrice:
+                    Number(
+                        document.getElementById(
+                            "originalPrice"
+                        ).value
+                    ) || 0,
+
+                price:
+                    Number(
+                        document.getElementById(
+                            "price"
+                        ).value
+                    ),
+
+                negotiable:
+                    document.getElementById(
+                        "negotiable"
+                    ).value,
+
+                city:
+                    document.getElementById(
+                        "city"
+                    ).value.trim(),
+
+                state:
+                    document.getElementById(
+                        "state"
+                    ).value.trim(),
+
+                description:
+                    document.getElementById(
+                        "description"
+                    ).value.trim(),
+
+                image:
+                    uploadedImage
+
+            };
+
+
+            cars.unshift(newCar);
+
+            saveCars();
+
+            displayCars();
+
+
+            document
+                .getElementById("carForm")
+                .reset();
+
+
+            uploadedImage = "";
+
+            document.getElementById(
+                "imagePreview"
+            ).innerHTML = "";
+
+
+            updateLivePreview();
+
+            updateLivePreviewImage();
+
+            calculateSavings();
+
+
+            document
+                .getElementById("successModal")
+                .classList.add("show");
+
+
+            document
+                .getElementById("cars")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+    );
+
+
+/* =========================================
+   INPUT LISTENERS
+========================================= */
+
+const previewInputs = [
+    "brand",
+    "model",
+    "year",
+    "mileage",
+    "fuel",
+    "transmission",
+    "price"
+];
+
+
+previewInputs.forEach(id => {
+
+    const element =
+        document.getElementById(id);
+
+
+    element.addEventListener(
+        "input",
+        updateLivePreview
+    );
+
+
+    element.addEventListener(
+        "change",
+        updateLivePreview
+    );
+
 });
+
+
+/* =========================================
+   CLOSE MODAL
+========================================= */
+
+function closeModal() {
+
+    document
+        .getElementById("successModal")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("cars")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================================
+   SCROLL TO SELL
+========================================= */
+
+function scrollToSell() {
+
+    document
+        .getElementById("sell")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+displayCars();
+
+updateLivePreview();
+
+updateLivePreviewImage();
+
