@@ -3,82 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore India's most exclusive collection of pre-owned hypercars, sports coupes, and luxury SUVs at Prestige Motors.">
-    <title>Prestige Motors | Elite Pre-Owned Collection</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <title>AutoMarket - Buy & Sell Cars</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo">Prestige Motors</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#inventory">Collection</a></li>
-            <li><a href="#">Finance</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container nav">
+            <div class="logo">
+                <i class="fa-solid fa-car"></i>
+                Auto<span>Market</span>
+            </div>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Uncompromising Performance</h1>
-            <p>Explore India's most exclusive collection of pre-owned hypercars, sports coupes, and luxury SUVs.</p>
-            <a href="#inventory" class="btn hero-btn">View Collection</a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#cars">Cars</a>
+                <a href="#sell">Sell Your Car</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <button class="sell-btn" onclick="scrollToSell()">
+                <i class="fa-solid fa-plus"></i>
+                Sell Car
+            </button>
         </div>
     </header>
 
-    <section id="inventory" class="inventory-section">
-        <h2 class="section-title">The <span>Showroom</span></h2>
-        
-        <!-- Controls: Search and Filters -->
-        <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search models (e.g. Huracan, Mustang)...">
-            
-            <div class="filters" id="filterContainer">
-                <button class="filter-btn active" data-brand="All">All</button>
-                <button class="filter-btn" data-brand="Lamborghini">Lamborghini</button>
-                <button class="filter-btn" data-brand="Ferrari">Ferrari</button>
-                <button class="filter-btn" data-brand="Aston Martin">Aston Martin</button>
-                <button class="filter-btn" data-brand="Jaguar">Jaguar</button>
-                <button class="filter-btn" data-brand="Ford">Ford</button>
-                <button class="filter-btn" data-brand="BMW">BMW</button>
-                <button class="filter-btn" data-brand="Toyota">Toyota</button>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <span class="badge">Trusted Car Marketplace</span>
+
+                <h1>
+                    Find Your
+                    <span>Perfect Car</span>
+                </h1>
+
+                <p>
+                    Buy and sell quality used cars easily.
+                    Compare prices, specifications and find
+                    the right vehicle for you.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#cars" class="primary-btn">
+                        Browse Cars
+                    </a>
+
+                    <a href="#sell" class="secondary-btn">
+                        Sell Your Car
+                    </a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Car Grid -->
-        <div class="grid" id="carGrid">
-            <!-- JavaScript will inject car cards here -->
+
+            <div class="hero-car">
+                <i class="fa-solid fa-car-side"></i>
+            </div>
+
         </div>
     </section>
 
-    <!-- Car Details Modal -->
-    <div id="carModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
-            <button class="close-btn" aria-label="Close modal">&times;</button>
-            <div class="modal-body">
-                <img id="modalImg" alt="Car visual representation">
-                <div class="modal-info">
-                    <h2 id="modalTitle">Car Title</h2>
-                    <p class="modal-price" id="modalPrice">Price</p>
-                    <div class="modal-specs-grid">
-                        <div><strong>Engine:</strong> <span id="modalEngine"></span></div>
-                        <div><strong>0-100 km/h:</strong> <span id="modalAcc"></span></div>
-                        <div><strong>Mileage:</strong> <span id="modalKm"></span></div>
-                        <div><strong>Fuel:</strong> <span id="modalFuel"></span></div>
-                        <div><strong>Transmission:</strong> <span id="modalTrans"></span></div>
-                        <div><strong>Year:</strong> <span id="modalYear"></span></div>
-                    </div>
-                    <button class="btn enquire-btn">Enquire Now</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
+    <!-- SEARCH -->
+    <section class="search-section">
+        <div class="container">
+
+            <div class="search-box">
+
+                <div class="search-field">
+                    <label>Search</label>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search car brand or model..."
+                        oninput="filterCars()"
+                    >
+                </div>
+
+                <div class="search-field">
+                    <label>Fuel Type</label>
+
+                    <select id="fuelFilter" onchange="filterCars()">
+                        <option value="">All Fuel Types</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Electric">Electric</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="search-field">
+                    <label>Transmission</label>
+
+                    <select id="transmissionFilter" onchange="filterCars()">
+                        <option value="">All Transmissions</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+
+                <button class="search-btn" onclick="filterCars()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CARS -->
+    <section class="cars-section" id="cars">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <span class="small-title">AVAILABLE CARS</span>
+                    <h2>Latest Car Listings</h2>
+                </div>
+
+                <span id="carCount" class="car-count"></span>
+            </div>
+
+            <div id="carsContainer" class="cars-grid">
+                <!-- Cars generated by JavaScript -->
+            </div>
+
+            <div id="noCars" class="no-cars hidden">
+                <i class="fa-solid fa-car"></i>
+                <h3>No cars found</h3>
+                <p>Try changing your search filters.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SELL YOUR CAR -->
+    <section class="sell-section" id="sell">
+        <div class="container">
+
+            <div class="section-heading centered">
+                <span class="small-title">SELL YOUR CAR</span>
+
+                <h2>List Your Car</h2>
+
+                <p>
+                    Enter your car details below and create
+                    a listing instantly.
+                </p>
+            </div>
+
+
+            <div class="form-wrapper">
+
+                <form id="carForm">
+
+                    <!-- BASIC INFORMATION -->
+                    <div class="form-section">
+
+                        <h3>
+                            <i class="fa-solid fa-car"></i>
+                            Basic Information
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Car Brand *</label>
+
+                                <input
+                                    type="text"
+                                    id="brand"
+                                    placeholder="e.g. Toyota"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Car Model *</label>
+
+                                <input
+                                    type="text"
+                                    id="model"
+                                    placeholder="e.g. Corolla"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Manufacturing Year *</label>
+
+                                <input
+                                    type="number"
+                                    id="year"
+                                    min="1990"
+                                    max="2030"
+                                    placeholder="2022"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>KM Driven *</label>
+
+                                <input
+                                    type="number"
+                                    id="mileage"
+                                    placeholder="45000"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Fuel Type *</label>
+
+                                <select id="fuel" required>
+                                    <option value="">Select fuel</option>
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="CNG">CNG</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Transmission *</label>
+
+                                <select id="transmission" required>
+                                    <option value="">Select transmission</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Automatic">Automatic</option>
+                                    <option value="AMT">AMT</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Ownership</label>
+
+                                <select id="ownership">
+                                    <option value="1st Owner">1st Owner</option>
+                                    <option value="2nd Owner">2nd Owner</option>
+                                    <option value="3rd Owner">3rd Owner</option>
+                                    <option value="4th Owner">4th Owner</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Color</label>
+
+                                <input
+                                    type="text"
+                                    id="color"
+                                    placeholder="White"
+                                >
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- PRICE -->
+                    <div class="form-section">
+
+                        <h3>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            Pricing
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Original Price (₹)</label>
+
+                                <input
+                                    type="number"
+                                    id="originalPrice"
+                                    placeholder="1200000"
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Selling Price (₹) *</label>
+
+                                <input
+                                    type="number"
+                                    id="price"
+                                    placeholder="950000"
+                                    required
+                                    oninput="calculateSavings()"
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Negotiable?</label>
+
+                                <select id="negotiable">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div id="savingsBox" class="savings-box hidden">
+                            <i class="fa-solid fa-tag"></i>
+                            <span id="savingsText"></span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+                    <div class="form-section">
+
+                        <h3>
+                            <i class="fa-solid fa-location-dot"></i>
+                            Location
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>City *</label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder="Kochi"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>State</label>
+
+                                <input
+                                    type="text"
+                                    id="state"
+                                    placeholder="Kerala"
+                                >
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+                    <div class="form-section">
+
+                        <h3>
+                            <i class="fa-solid fa-file-lines"></i>
+                            Description
+                        </h3>
+
+                        <div class="form-group">
+
+                            <label>About Your Car</label>
+
+                            <textarea
+                                id="description"
+                                rows="5"
+                                placeholder="Describe your car, service history, condition, features etc."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+                    <div class="form-section">
+
+                        <h3>
+                            <i class="fa-solid fa-image"></i>
+                            Car Image
+                        </h3>
+
+                        <div class="image-upload">
+
+                            <input
+                                type="file"
+                                id="carImage"
+                                accept="image/*"
+                                onchange="previewImage(event)"
+                            >
+
+                            <label for="carImage" class="upload-label">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                                <strong>Upload Car Image</strong>
+
+                                <span>
+                                    JPG, PNG or WEBP
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <div id="imagePreview" class="image-preview"></div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Publish Car Listing
+                    </button>
+
+                </form>
+
+
+                <!-- LIVE PREVIEW -->
+                <div class="live-preview">
+
+                    <div class="preview-title">
+                        <span>LIVE PREVIEW</span>
+                    </div>
+
+                    <div id="previewCard" class="preview-card">
+
+                        <div class="preview-image">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+
+                        <div class="preview-content">
+
+                            <h3 id="previewName">
+                                Your Car
+                            </h3>
+
+                            <div class="preview-price" id="previewPrice">
+                                ₹0
+                            </div>
+
+                            <div class="preview-details">
+
+                                <span>
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <b id="previewYear">Year</b>
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-gauge"></i>
+                                    <b id="previewMileage">KM</b>
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-gas-pump"></i>
+                                    <b id="previewFuel">Fuel</b>
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-gears"></i>
+                                    <b id="previewTransmission">
+                                        Transmission
+                                    </b>
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features" id="about">
+
+        <div class="container">
+
+            <div class="section-heading centered">
+                <span class="small-title">WHY AUTOMARKET?</span>
+                <h2>Simple. Fast. Trusted.</h2>
+            </div>
+
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <h3>Verified Listings</h3>
+
+                    <p>
+                        Browse detailed listings with important
+                        vehicle information.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <h3>Best Prices</h3>
+
+                    <p>
+                        Compare prices and find great deals
+                        on used vehicles.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <h3>Sell Quickly</h3>
+
+                    <p>
+                        Create your car listing in just a few
+                        minutes.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Prestige Motors. All rights reserved. | Premium Pre-Owned Retail</p>
+
+        <div class="container footer-content">
+
+            <div>
+                <div class="logo">
+                    <i class="fa-solid fa-car"></i>
+                    Auto<span>Market</span>
+                </div>
+
+                <p>
+                    Your trusted marketplace for buying
+                    and selling cars.
+                </p>
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#cars">Cars</a>
+                <a href="#sell">Sell Car</a>
+                <a href="#about">About</a>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 AutoMarket. All rights reserved.
+        </div>
+
     </footer>
 
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2>Listing Published!</h2>
+
+            <p>
+                Your car has been successfully added
+                to the marketplace.
+            </p>
+
+            <button onclick="closeModal()" class="primary-btn">
+                View Listing
+            </button>
+
+        </div>
+
+    </div>
+
+
     <script src="script.js"></script>
+
 </body>
 </html>
