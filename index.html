@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Motors | Pre-Owned Luxury Cars</title>
-    <!-- Links to the CSS file -->
+    <title>Prestige Motors | Elite Pre-Owned Collection</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,112 +12,72 @@
         <div class="logo">Prestige Motors</div>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#inventory">Inventory</a></li>
+            <li><a href="#inventory">Collection</a></li>
             <li><a href="#">Finance</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <h1>Drive Your Dream</h1>
-        <p>Discover an exclusive collection of meticulously inspected, pre-owned luxury vehicles tailored for excellence.</p>
+        <div class="hero-content">
+            <h1>Uncompromising Performance</h1>
+            <p>Explore India's most exclusive collection of pre-owned hypercars, sports coupes, and luxury SUVs.</p>
+            <a href="#inventory" class="btn hero-btn">View Collection</a>
+        </div>
     </header>
 
     <section id="inventory" class="inventory-section">
-        <h2 class="section-title">Featured <span>Collection</span></h2>
+        <h2 class="section-title">The <span>Showroom</span></h2>
         
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz E-Class">
-                <div class="card-content">
-                    <h3 class="card-title">2021 Mercedes-Benz E-Class</h3>
-                    <div class="card-specs">
-                        <span>28,500 km</span>
-                        <span>Petrol</span>
-                        <span>Automatic</span>
-                    </div>
-                    <p class="card-price">₹ 45,00,000</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
+        <!-- Controls: Search and Filters -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search models (e.g. Huracan, Mustang)...">
+            
+            <div class="filters" id="filterContainer">
+                <button class="filter-btn active" data-brand="All">All</button>
+                <button class="filter-btn" data-brand="Lamborghini">Lamborghini</button>
+                <button class="filter-btn" data-brand="Ferrari">Ferrari</button>
+                <button class="filter-btn" data-brand="Aston Martin">Aston Martin</button>
+                <button class="filter-btn" data-brand="Jaguar">Jaguar</button>
+                <button class="filter-btn" data-brand="Ford">Ford</button>
+                <button class="filter-btn" data-brand="BMW">BMW</button>
+                <button class="filter-btn" data-brand="Toyota">Toyota</button>
             </div>
+        </div>
+        
+        <!-- Car Grid -->
+        <div class="grid" id="carGrid">
+            <!-- JavaScript will inject car cards here -->
+        </div>
+    </section>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1555353540-64fd3b382025?auto=format&fit=crop&w=800&q=80" alt="BMW 5 Series">
-                <div class="card-content">
-                    <h3 class="card-title">2022 BMW 5 Series 530i Sport</h3>
-                    <div class="card-specs">
-                        <span>43,500 km</span>
-                        <span>Petrol</span>
-                        <span>Automatic</span>
+    <!-- Car Details Modal -->
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Car Image">
+                <div class="modal-info">
+                    <h2 id="modalTitle">Car Title</h2>
+                    <p class="modal-price" id="modalPrice">Price</p>
+                    <div class="modal-specs-grid">
+                        <div><strong>Engine:</strong> <span id="modalEngine"></span></div>
+                        <div><strong>0-100 km/h:</strong> <span id="modalAcc"></span></div>
+                        <div><strong>Mileage:</strong> <span id="modalKm"></span></div>
+                        <div><strong>Fuel:</strong> <span id="modalFuel"></span></div>
+                        <div><strong>Transmission:</strong> <span id="modalTrans"></span></div>
+                        <div><strong>Year:</strong> <span id="modalYear"></span></div>
                     </div>
-                    <p class="card-price">₹ 38,50,000</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?auto=format&fit=crop&w=800&q=80" alt="Range Rover Sport">
-                <div class="card-content">
-                    <h3 class="card-title">2018 Range Rover Sport</h3>
-                    <div class="card-specs">
-                        <span>73,000 km</span>
-                        <span>Diesel</span>
-                        <span>Automatic</span>
-                    </div>
-                    <p class="card-price">₹ 28,50,000</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1503376713292-0b73c473138b?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 Carrera">
-                <div class="card-content">
-                    <h3 class="card-title">2019 Porsche 911 Carrera</h3>
-                    <div class="card-specs">
-                        <span>12,000 km</span>
-                        <span>Petrol</span>
-                        <span>Automatic</span>
-                    </div>
-                    <p class="card-price">₹ 1,45,00,000</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1619551734325-81aaf323686c?auto=format&fit=crop&w=800&q=80" alt="Audi Q5">
-                <div class="card-content">
-                    <h3 class="card-title">2023 Audi Q5 Technology</h3>
-                    <div class="card-specs">
-                        <span>30,000 km</span>
-                        <span>Petrol</span>
-                        <span>Automatic</span>
-                    </div>
-                    <p class="card-price">₹ 36,90,000</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=800&q=80" alt="Volvo XC60">
-                <div class="card-content">
-                    <h3 class="card-title">2022 Volvo XC60 B5 Ultimate</h3>
-                    <div class="card-specs">
-                        <span>58,500 km</span>
-                        <span>Petrol</span>
-                        <span>Automatic</span>
-                    </div>
-                    <p class="card-price">₹ 39,90,000</p>
-                    <a href="#" class="btn">View Details</a>
+                    <button class="btn enquire-btn">Enquire Now</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <footer>
         <p>&copy; 2026 Prestige Motors. All rights reserved. | Premium Pre-Owned Retail</p>
     </footer>
 
-    <!-- Links to the JS file -->
     <script src="script.js"></script>
 </body>
 </html>
