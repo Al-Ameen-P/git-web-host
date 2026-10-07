@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore India's most exclusive collection of pre-owned hypercars, sports coupes, and luxury SUVs at Prestige Motors.">
     <title>Prestige Motors | Elite Pre-Owned Collection</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -52,11 +53,11 @@
     </section>
 
     <!-- Car Details Modal -->
-    <div id="carModal" class="modal">
+    <div id="carModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <button class="close-btn" aria-label="Close modal">&times;</button>
             <div class="modal-body">
-                <img id="modalImg" src="" alt="Car Image">
+                <img id="modalImg" alt="Car visual representation">
                 <div class="modal-info">
                     <h2 id="modalTitle">Car Title</h2>
                     <p class="modal-price" id="modalPrice">Price</p>
